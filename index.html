@@ -4,7 +4,239 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Razas de Gatos - Guía Completa</title>
-    <link rel="stylesheet" href="style.css">
+    <style>
+        /* Variables CSS */
+        :root {
+            --color-primario: #ff6b9d;
+            --color-acento: #ff9a56;
+            --border-radius: 8px;
+        }
+
+        /* Box-sizing en *, *::before, *::after */
+        *,
+        *::before,
+        *::after {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: #faf8f3;
+        }
+
+        /* HEADER - position: relative con hijo absolute */
+        header {
+            background: linear-gradient(135deg, var(--color-acento) 0%, var(--color-primario) 100%);
+            color: white;
+            padding: 40px 20px;
+            text-align: center;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            position: relative;
+        }
+
+        header h1 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+        }
+
+        header p {
+            font-size: 1.1em;
+            font-style: italic;
+        }
+
+        /* Decoración absoluta dentro del header (hijo absolute) */
+        header::before {
+            content: "🐱";
+            position: absolute;
+            font-size: 3em;
+            top: 10px;
+            right: 20px;
+            opacity: 0.3;
+        }
+
+        /* NAVEGACIÓN - position: fixed */
+        nav {
+            background-color: #2c2c2c;
+            padding: 15px;
+            text-align: center;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            z-index: 100;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            margin: 0 20px;
+            font-size: 1.1em;
+            font-weight: bold;
+            transition: color 0.3s ease;
+        }
+
+        nav a:hover {
+            color: var(--color-acento);
+        }
+
+        /* MAIN - ajuste por nav fixed */
+        main {
+            max-width: 1000px;
+            margin: 80px auto 0;
+            padding: 0 20px;
+        }
+
+        /* ASIDE - position: sticky */
+        aside {
+            background-color: #fff5e6;
+            border-left: 4px solid var(--color-primario);
+            padding: 20px;
+            margin-bottom: 30px;
+            border-radius: var(--border-radius);
+            position: sticky;
+            top: 70px;
+            max-width: 300px;
+            float: right;
+            margin-left: 20px;
+        }
+
+        aside h3 {
+            color: var(--color-primario);
+            margin-bottom: 10px;
+        }
+
+        aside p {
+            font-size: 0.9em;
+            color: #555;
+        }
+
+        /* SECCIONES */
+        section {
+            margin-bottom: 50px;
+            clear: both;
+        }
+
+        section h2 {
+            color: var(--color-primario);
+            font-size: 2em;
+            margin-bottom: 30px;
+            border-bottom: 3px solid var(--color-acento);
+            padding-bottom: 10px;
+        }
+
+        /* ARTÍCULOS */
+        article {
+            background-color: white;
+            border-radius: var(--border-radius);
+            padding: 25px;
+            margin-bottom: 25px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        article:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        article h3 {
+            color: var(--color-primario);
+            font-size: 1.8em;
+            margin-bottom: 15px;
+        }
+
+        article img {
+            border-radius: var(--border-radius);
+            margin-bottom: 15px;
+            display: block;
+        }
+
+        article p {
+            color: #555;
+            line-height: 1.8;
+        }
+
+        /* SECCIÓN DE CARACTERÍSTICAS */
+        #caracteristicas p {
+            background-color: #ffe8f0;
+            padding: 15px;
+            border-left: 4px solid var(--color-primario);
+            margin-bottom: 15px;
+            border-radius: var(--border-radius);
+        }
+
+        /* SECCIÓN DE CONTACTO */
+        #contacto {
+            background: linear-gradient(135deg, #fff5e6 0%, #ffe8f0 100%);
+            padding: 30px;
+            border-radius: var(--border-radius);
+            text-align: center;
+        }
+
+        #contacto h2 {
+            color: var(--color-primario);
+        }
+
+        #contacto p {
+            font-size: 1.1em;
+            color: #333;
+            margin: 10px 0;
+        }
+
+        /* FOOTER */
+        footer {
+            background-color: #2c2c2c;
+            color: white;
+            text-align: center;
+            padding: 25px;
+            margin-top: 50px;
+        }
+
+        footer p {
+            margin: 0;
+        }
+
+        /* RESPONSIVE */
+        @media (max-width: 768px) {
+            nav {
+                position: fixed;
+                top: 0;
+            }
+
+            main {
+                margin-top: 80px;
+            }
+
+            header h1 {
+                font-size: 1.8em;
+            }
+
+            nav a {
+                margin: 0 10px;
+                font-size: 0.95em;
+            }
+
+            section h2 {
+                font-size: 1.6em;
+            }
+
+            article h3 {
+                font-size: 1.5em;
+            }
+
+            aside {
+                float: none;
+                max-width: 100%;
+                margin-left: 0;
+            }
+        }
+    </style>
 </head>
 <body>
     <header>
@@ -20,6 +252,11 @@
     </nav>
 
     <main>
+        <aside>
+            <h3>💡 Dato Importante</h3>
+            <p>Los gatos duermen entre 12 y 16 horas al día. ¡Son los maestros del descanso!</p>
+        </aside>
+
         <section id="inicio">
             <h2>Bienvenido al Mundo Felino</h2>
             <p>Los gatos son animales fascinantes con una gran variedad de razas, cada una con características propias. Desde el elegante Siamés hasta el imponente Maine Coon, descubre qué raza se adapta mejor a tu estilo de vida.</p>
